@@ -44,7 +44,7 @@ body {
 }
 
 #memory--app-container {
-  background-color: #0061a8;
+  background-color: #ffffff;
   width:100%;
   height:90%;
 }
@@ -288,7 +288,33 @@ body {
 .back.card-15 {
   background-image: url(../images/fruits/strawberry.jpg);
 }
-
+.lr_monkey {
+	width:100%;
+	position:relative;
+  animation: move-it-lr 10s infinite;
+}
+.bt_monkey {
+  width:100%;
+  left: 0%;
+	position:relative;
+  animation: move-it-bt 8s infinite;
+}
+@keyframes move-it-lr {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes move-it-bt {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: 100%;
+  }
+}
 /** Matching Cards **/
 /**
  * If you wish to have custom matching images, you can do so
