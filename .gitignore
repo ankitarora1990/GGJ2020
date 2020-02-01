@@ -3,3 +3,10 @@
 
 # OS files
 .DS_Store
+
+
+# VS files
+applicationhost.config
+.suo
+slnx.sqlite
+VSWorkspaceState.json
