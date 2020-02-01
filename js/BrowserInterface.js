@@ -22,8 +22,8 @@
     points.innerHTML = "Attempts:   Mistakes: ";
 
   // Handle clicking on settings icon
-   var settings = document.getElementById('memory--settings-icon');
-   var modal = document.getElementById('memory--settings-modal');
+   var settings = document.getElementById('memory-settings-icon');
+   var modal = document.getElementById('memory-settings-modal');
    var handleOpenSettings = function (event) {
      event.preventDefault();
      modal.classList.toggle('show');
@@ -33,20 +33,20 @@
 
 
   // Handle settings form submission
-  var reset = document.getElementById('memory--settings-reset');
+  var reset = document.getElementById('memory-settings-reset');
   var handleSettingsSubmission = function (event) {
     event.preventDefault();
 
-    var selectWidget = document.getElementById("memory--settings-grid").valueOf();
+    var selectWidget = document.getElementById("memory-settings-grid").valueOf();
     var grid = selectWidget.options[selectWidget.selectedIndex].value;
     var gridValues = grid.split('x');
     var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]), imagesAvailable, timerObj);
 
     if (cards) {
-      document.getElementById('memory--settings-modal').classList.remove('show');
-      document.getElementById('memory--end-game-modal').classList.remove('show');
-      document.getElementById('memory--end-game-message').innerText = "";
-      document.getElementById('memory--end-game-score').innerText = "";
+      document.getElementById('memory-settings-modal').classList.remove('show');
+      document.getElementById('memory-end-game-modal').classList.remove('show');
+      document.getElementById('memory-end-game-message').innerText = "";
+      document.getElementById('memory-end-game-score').innerText = "";
       buildLayout($.cards, $.settings.rows, $.settings.columns);
     }
 
@@ -67,7 +67,7 @@
 
     if (status.code == 3 ) {
       setTimeout(function () {
-        var childNodes = document.getElementById('memory--cards').childNodes;
+        var childNodes = document.getElementById('memory-cards').childNodes;
         childNodes[status.args[0]].classList.remove('clicked');
         childNodes[status.args[1]].classList.remove('clicked');
       }.bind(status), nonMatchingCardTime);
@@ -76,11 +76,11 @@
       var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
       var message = getEndGameMessage(score);
 
-      document.getElementById('memory--end-game-message').textContent = message;
-      document.getElementById('memory--end-game-score').textContent =
+      document.getElementById('memory-end-game-message').textContent = message;
+      document.getElementById('memory-end-game-score').textContent =
           'Score: ' + score + ' / 100';
 
-      document.getElementById("memory--end-game-modal").classList.toggle('show');
+      document.getElementById("memory-end-game-modal").classList.toggle('show');
     }
 
   };
@@ -110,13 +110,13 @@
       return;
     }
 
-    var memoryCards = document.getElementById("memory--cards");
+    var memoryCards = document.getElementById("memory-cards");
     var index = 0;
 
-    var cardMaxWidth = document.getElementById('memory--app-container').offsetWidth / columns;
+    var cardMaxWidth = document.getElementById('memory-app-container').offsetWidth / columns;
     var cardHeightForMaxWidth = cardMaxWidth * (3 / 4);
 
-    var cardMaxHeight = document.getElementById('memory--app-container').offsetHeight / rows;
+    var cardMaxHeight = document.getElementById('memory-app-container').offsetHeight / rows;
     var cardWidthForMaxHeight = cardMaxHeight * (4 / 3);
 
     // Clean up. Remove all child nodes and card clicking event listeners.
@@ -138,13 +138,13 @@
     if (cardMaxHeight > cardHeightForMaxWidth) {
       // Update height
       memoryCards.style.height = (cardHeightForMaxWidth * rows) + "px";
-      memoryCards.style.width = document.getElementById('memory--app-container').offsetWidth + "px";
+      memoryCards.style.width = document.getElementById('memory-app-container').offsetWidth + "px";
       memoryCards.style.top = ((cardMaxHeight * rows - (cardHeightForMaxWidth * rows)) / 2) + "px";
     }
     else {
       // Update Width
       memoryCards.style.width = (cardWidthForMaxHeight * columns) + "px";
-      memoryCards.style.height = document.getElementById('memory--app-container').offsetHeight + "px";
+      memoryCards.style.height = document.getElementById('memory-app-container').offsetHeight + "px";
       memoryCards.style.top = 0;
     }
 
