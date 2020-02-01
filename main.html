@@ -14,7 +14,7 @@
             <option value="2x3">Easy</option>
             <option value="3x4" selected>Medium</option>
             <option value="4x5">Hard</option>
-            <option value="5x6">Don't do it!</option>
+            <option value="5x6">Seriously Dude? Don't try this !</option>
           </select>
           <input id="memory--settings-reset" type="submit" value="Start New Game" />
         </form>
@@ -28,16 +28,17 @@
         </div>
       </div>
     </section>
-    <section id="memory--app-container">
+    <section class="memory--menu-bar">
+        <div class="inner">
+          <div class="left"><h1 class="memory--app-name">Re-PAIR with Chaos</h1></div>
+          <div class="timer memory--app-name"></div>
+          <!-- <div class="right"><a href="#settings"><img id="memory--settings-icon" src="images/gear.png" /></a></div> -->
+        </div>
+      </section>
+    <section id="memory--app-container">       
       <ul id="memory--cards">
       </ul>
-    </section>
-    <section class="memory--menu-bar">
-      <div class="inner">
-        <div class="left"><h1 class="memory--app-name">Fruit Matcher</h1></div>
-        <div class="right"><a href="#settings"><img id="memory--settings-icon" src="images/gear.png" /></a></div>
-      </div>
-    </section>
+    </section>    
     <script src="js/MemoryGame.js" type="text/javascript"></script>
     <script src="js/Card.js" type="text/javascript"></script>
     <script src="js/BrowserInterface.js" type="text/javascript"></script>

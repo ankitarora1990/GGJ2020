@@ -9,6 +9,11 @@ body {
   height:100%;
 }
 
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
+}
+
 .modal {
   position: fixed;
   height: 90%;

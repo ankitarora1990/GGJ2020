@@ -1,35 +1,32 @@
 /**
- * Author: Maximo Mena
- * GitHub: mmenavas
- * Twitter: @menamaximo
- * Project: Memory Workout
- * Description: The game interface
- */
-
-/**
- * @TODO Refactor code.
+ * Starting module.
  */
 (function($) {
 
-  /************ Start hard coded settings ******************/
-
   // How long a non matching card is displayed once clicked.
-  var nonMatchingCardTime = 1000;
+  var nonMatchingCardTime = 500;
 
-  // Shuffle card images: How many different images are available to shuffle
-  // from?
+  // Shuffle card images: How many different images are available to shuffle from?
   var imagesAvailable = 15;
 
-  /************ End hard coded settings ******************/
-
-  // Handle clicking on settings icon
-  var settings = document.getElementById('memory--settings-icon');
-  var modal = document.getElementById('memory--settings-modal');
-  var handleOpenSettings = function (event) {
-    event.preventDefault();
-    modal.classList.toggle('show');
+  var timerObj = {
+    second: 0, 
+    minute: 0,
+    hour: 0
   };
-  settings.addEventListener('click', handleOpenSettings);
+
+  var timer = document.querySelector(".timer");
+  timer.innerHTML = "0 mins 0 secs";
+  // Handle clicking on settings icon
+  // var settings = document.getElementById('memory--settings-icon');
+  // var modal = document.getElementById('memory--settings-modal');
+  // var handleOpenSettings = function (event) {
+  //   event.preventDefault();
+  //   modal.classList.toggle('show');
+  // };
+  // settings.addEventListener('click', handleOpenSettings);
+
+
 
   // Handle settings form submission
   var reset = document.getElementById('memory--settings-reset');
@@ -39,7 +36,7 @@
     var selectWidget = document.getElementById("memory--settings-grid").valueOf();
     var grid = selectWidget.options[selectWidget.selectedIndex].value;
     var gridValues = grid.split('x');
-    var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]), imagesAvailable);
+    var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]), imagesAvailable, timerObj);
 
     if (cards) {
       document.getElementById('memory--settings-modal').classList.remove('show');
@@ -52,9 +49,9 @@
   };
   reset.addEventListener('click', handleSettingsSubmission);
 
+
   // Handle clicking on card
   var handleFlipCard = function (event) {
-
     event.preventDefault();
 
     var status = $.play(this.index);
@@ -88,16 +85,16 @@
     var message = "";
 
     if (score == 100) {
-      message = "Amazing job!"
+      message = "You are a Pro!"
     }
     else if (score >= 70 ) {
       message = "Great job!"
     }
     else if (score >= 50) {
-      message = "Great job!"
+      message = "Keep practicing, you have potential!"
     }
     else {
-      message = "You can do better.";
+      message = "Practice reugarly, You can do better!";
     }
 
     return message;

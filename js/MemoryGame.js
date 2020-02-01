@@ -1,22 +1,23 @@
 /**
- * Author: Maximo Mena
- * GitHub: mmenavas
- * Twitter: @menamaximo
- * Project: Memory Workout
- * Description: This is a memory game written in pure JavaScript.
- * The goal is to match pairs of cards in the least
- * number of matching attempts.
- */
-
-/**
- * @TODO
- * - Implement support for multiple players.
- */
-
-/**
- * @namespace The main application object
+ * Core memory module
  */
 var MemoryGame = {
+
+  startTimer: function(timerObj) {
+      setInterval(function(){
+          var timer = document.querySelector(".timer");
+          timer.innerHTML = timerObj.minute+"mins "+ timerObj.second+"secs";
+          timerObj.second++;
+          if(timerObj.second == 60){
+            timerObj.minute++;
+            timerObj.second=0;
+          }
+          if(timerObj.minute == 60){
+            timerObj.hour++;
+            timerObj.minute = 0;
+          }
+      },1000);
+  },
 
   settings: {
     rows: 2,
@@ -27,7 +28,7 @@ var MemoryGame = {
   // Properties that indicate state
   cards: [], // Array of MemoryGame.Card objects
   attempts: 0, // How many pairs of cards were flipped before completing game
-  mistakes: 0, // How many pairs of cards were flipped before completing game
+  mistakes: 0, 
   isGameOver: false,
 
   /**
@@ -40,7 +41,7 @@ var MemoryGame = {
    * @param {number} number of card images
    * @return {array} shuffled cards
    */
-  initialize : function(rows, columns, images) {
+  initialize : function(rows, columns, images, timerObj) {
     var validOptions = true;
 
     // Validate arguments
@@ -70,6 +71,12 @@ var MemoryGame = {
       this.isGameOver = false;
       this.createCards().shuffleCards();
     }
+
+    //reset timer
+    this.second = 0;
+    this.minute = 0; 
+    this.hour = 0;
+    this.startTimer(timerObj);
 
     return this.cards;
   },
