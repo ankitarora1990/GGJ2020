@@ -237,7 +237,7 @@ var MemoryGame = {
         }
         else {
           status.code = 1,
-          status.message = 'Flip first card.';
+          status.message = 'First card flipped.';
         }
       }
       else {
