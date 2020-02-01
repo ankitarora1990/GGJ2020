@@ -19,6 +19,13 @@ var MemoryGame = {
       },1000);
   },
 
+    updatePoints: function () {
+        var points = document.querySelector(".points");
+        var pointsText = [];
+        pointsText.push("Attempts: ", this.attempts, " Mistakes: ", this.mistakes);
+        points.innerHTML = pointsText.join("");
+    },
+
   settings: {
     rows: 2,
     columns: 3,
@@ -70,6 +77,7 @@ var MemoryGame = {
       this.mistakes = 0;
       this.isGameOver = false;
       this.createCards().shuffleCards();
+      this.updatePoints();
     }
 
     //reset timer
@@ -251,6 +259,8 @@ var MemoryGame = {
         status.code = 0,
         status.message = 'Card is already facing up.';
       }
+
+      this.updatePoints();
 
       return status;
 
