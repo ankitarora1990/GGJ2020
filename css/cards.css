@@ -1,150 +1,4 @@
-html {
-  width:100%;
-  height:100%;
-}
-body {
-  margin:0;
-  padding:0;
-  width:100%;
-  height:100%;
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-}
-
-.timer {
-	display: inline-block;
-	margin: 0 1rem;
-}
-
-.modal {
-  position: fixed;
-  height: 90%;
-  right: 0;
-  top: 0;
-  z-index: 3;
-  width: 100%;
-  visibility: hidden;
-  opacity:0;
-  -webkit-transition:opacity 0.4s linear;
-  -moz-transition:opacity 0.4s linear;
-  -ms-transition:opacity 0.4s linear;
-  -o-transition:opacity 0.4s linear;
-  transition:opacity 0.4s linear;
-}
-.modal.show {
-  visibility: visible;
-  opacity:1;
-}
-
-.valign-table {
-  display: table;
-  table-layout: fixed;
-}
-.valign-cell {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-#memory--app-container {
-  background-color: #ffffff;
-  width:100%;
-  height:90%;
-}
-
-.memory--menu-bar {
-  width:100%;
-  background-color: #222;
-  height:10%;
-  display:table;
-}
-
-.memory--menu-bar .inner {
-  display:table-cell;
-  vertical-align:middle;
-}
-.memory--menu-bar .left {
-  text-align: left;
-  float:left;
-  width:50%;
-}
-.memory--menu-bar .right {
-  text-align: right;
-  float:right;
-  width:50%;
-}
-.memory--app-name {
-  color:#ccc;
-  font-size:26px;
-  margin:0;
-  padding:1px 4px;
-  text-transform: uppercase;
-  font-family: "Courier New";
-  letter-spacing: 2px;
-}
-@media screen and (max-width: 480px) {
-  .memory--app-name {
-    font-size:16px;
-  }
-}
-
-#memory--settings-icon {
-  height: 24px;
-  display: block;
-  padding:4px 8px;
-  float: right;
-}
-
-#memory--end-game-modal .wrapper {
-  background-color: rgba(0, 0, 0, .86);
-  text-align: center;
-  color:#ccc;
-  padding:8px 0;
-}
-#memory--end-game-modal h2,
-#memory--end-game-modal h3 {
-  margin:0;
-  margin-bottom: 4px;
-}
-
-#memory--settings-modal {
-  background-color: rgba(0, 0, 0, .86);
-  z-index: 4;
-}
-#memory--settings-modal form {
-  min-width:240px;
-  width:50%;
-  margin:0 auto;
-  text-align: center;
-  color:#ccc;
-}
-
-.memory--settings-label {
-  margin:8px 0;
-}
-
-#memory--settings-grid,
-#memory--settings-reset {
-  width:100%;
-  margin-bottom:16px;
-  font-size:18px;
-  background:transparent;
-  color:#ccc;
-  height:50px;
-  text-align: center;
-}
-
-#memory--settings-grid option {
-  padding-top:5px;
-  padding-bottom:5px;
-}
-
-#memory--settings-reset {
-  border-radius:5px;
-  border:2px solid #ccc;
-  cursor: pointer;
-}
-
-#memory--cards {
+#memory-cards {
   margin:0 auto;
   padding:0;
   height:100%;
@@ -290,6 +144,8 @@ body {
 .back.card-15 {
   background-image: url(../images/fruits/strawberry.jpg);
 }
+
+/* Monkey Movement */
 .lr_monkey {
 	width:100%;
 	position:relative;
@@ -301,6 +157,17 @@ body {
 	position:relative;
   animation: move-it-bt 8s infinite;
 }
+
+.lr_monkey:hover{
+animation-play-state: paused;
+/* JavaScript syntax: object.style.animationPlayState="paused" */
+}
+.bt_monkey:hover{
+animation-play-state: paused;
+}
+
+
+
 @keyframes move-it-lr {
   0% {
     left: 0%;
