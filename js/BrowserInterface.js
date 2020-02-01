@@ -16,15 +16,19 @@
   };
 
   var timer = document.querySelector(".timer");
-  timer.innerHTML = "0 mins 0 secs";
+    timer.innerHTML = "0 mins 0 secs";
+
+    var points = document.querySelector(".points");
+    points.innerHTML = "Attempts:   Mistakes: ";
+
   // Handle clicking on settings icon
-  // var settings = document.getElementById('memory--settings-icon');
-  // var modal = document.getElementById('memory--settings-modal');
-  // var handleOpenSettings = function (event) {
-  //   event.preventDefault();
-  //   modal.classList.toggle('show');
-  // };
-  // settings.addEventListener('click', handleOpenSettings);
+   var settings = document.getElementById('memory--settings-icon');
+   var modal = document.getElementById('memory--settings-modal');
+   var handleOpenSettings = function (event) {
+     event.preventDefault();
+     modal.classList.toggle('show');
+   };
+   settings.addEventListener('click', handleOpenSettings);
 
 
 
