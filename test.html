@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test scenarios</title>
+    <script src="js/CompareCards.js"></script>
+    <script>
+        function testCompareCards(card1, card2, expected) {
+            results.total++;
+            var result = CompareCards(card1, card2);
+            if (result !== expected) {
+                results.bad++;
+                console.log("Expected " + expected + ", but was " + result);
+            }
+        }
+        var results = {
+            total: 0,
+            bad: 0
+        };
+        testCompareCards("A", "B", false);
+        testCompareCards("A", "A", true);
+        testCompareCards("B", "B", true);
+
+        console.log("Of " + results.total + " tests, " + results.bad + " failed, "
+            + (results.total - results.bad) + " passed.");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
