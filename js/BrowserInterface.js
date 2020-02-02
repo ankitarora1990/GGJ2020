@@ -6,8 +6,7 @@
   // How long a non matching card is displayed once clicked.
   var nonMatchingCardTime = 500;
 
-  // Shuffle card images: How many different images are available to shuffle from?
-  var imagesAvailable = 15;
+
 
   var timerObj = {
     second: 0, 
@@ -120,32 +119,45 @@
   var getEndGameMessage = function(score) {
     var message = "";
     var mky = document.querySelector('.bt_monkey');
-    mky.style.webkitAnimationPlayState = "paused";
-    mky.style.width = "250px";
-    mky.style.height="250px";
-    mky.style.left = "47%";
-    mky.style.top="-50%";
-    mky.style.backgroundColor = "transparent"
-    mky.style.opacity = "1"
+    mky.style.display="none";
 
+    // mky.style.webkitAnimationPlayState = "paused";
+    // mky.style.left = "50%";
+    // mky.style.top="-60%";
     if (score == 100) {
-      message = "You are a Pro!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
     }
     else if (score >= 70 ) {
-      message = "Great job!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
     }
     else if (score >= 50) {
-      message = "Keep practicing, You have potential!"
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
     }
     else {
-      message = "Practice regularly, You can do better!";
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
     }
 
     return message;
   }
 
   // Build grid of cards
-  var buildLayout = function (cards, rows, columns) {
+  var buildLayout = function (cards, rows, columns, imgOffset) {
     if (!cards.length) {
       return;
     }
@@ -169,7 +181,7 @@
       for (var j = 0; j < columns; j++) {
         // Use cloneNode(true) otherwise only one node is appended
         memoryCards.appendChild(buildCardNode(index, cards[index],
-          (100 / columns) + "%", (100 / rows) + "%"));
+          (100 / columns) + "%", (100 / rows) + "%", imgOffset));
         index++;
       }
     }
@@ -192,11 +204,11 @@
 
   // Update on resize
   window.addEventListener('resize', function() {
-    buildLayout($.cards, $.settings.rows, $.settings.columns);
+    buildLayout($.cards, $.settings.rows, $.settings.columns, $.settings.imgOffset);
   }, true);
 
   // Build single card
-  var buildCardNode = function (index, card, width, height) {
+  var buildCardNode = function (index, card, width, height, imgOffset) {
     var flipContainer = document.createElement("li");
     var flipper = document.createElement("div");
     var front = document.createElement("a");
@@ -205,6 +217,8 @@
     flipContainer.index = index;
     flipContainer.style.width = width;
     flipContainer.style.height = height;
+    flipContainer.style.marginBottom ="-1%";
+    flipContainer.style.marginLeft ="-1%";
     flipContainer.classList.add("flip-container");
     if (card.isRevealed) {
       flipContainer.classList.add("clicked");
@@ -214,7 +228,8 @@
     front.classList.add("front");
     front.setAttribute("href", "#");
     back.classList.add("back");
-    back.classList.add("card-" + card.value);
+    back.classList.add("card"); 
+    back.classList.add("card-" + (card.value+imgOffset));
     if (card.isMatchingCard) {
       back.classList.add("matching");
     }
@@ -230,13 +245,31 @@
   };
   var w=Number(sessionStorage.getItem("diff_w"));
   var h=Number(sessionStorage.getItem("diff_h"));
-  var cards = $.initialize(w, h, imagesAvailable, timerObj);
+  // Shuffle card images: How many different images are available to shuffle from?
+  var imagesAvailable = 0;
+  var imgOffset =0;
+  if(w===2 && h===3){
+    imagesAvailable=15;//fruits
+    imgOffset=0;
+  }
+  else if(w===3 && h===4){
+    imagesAvailable=15;//buildings
+    imgOffset=0;
+  }
+  else if(w===4 && h===5){
+    imagesAvailable=15;//furs
+    imgOffset=15;
+  }else if(w===5 && h===6){
+    imagesAvailable=15;//sat images
+    imgOffset=30;
+  }
+  var cards = $.initialize(w, h, imagesAvailable, imgOffset, timerObj);
 
   if (cards) {
     // document.getElementById('memory-settings-modal').classList.remove('show');
     document.getElementById('memory-end-game-modal').classList.remove('show');
     document.getElementById('memory-end-game-message').innerText = "";
     document.getElementById('memory-end-game-score').innerText = "";
-    buildLayout($.cards, $.settings.rows, $.settings.columns);
+    buildLayout($.cards, $.settings.rows, $.settings.columns, $.settings.imgOffset);
   }
 })(MemoryGame);

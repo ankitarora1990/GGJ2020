@@ -29,11 +29,21 @@ var MemoryGame = {
         pointsText.push("Attempts: ", this.attempts, " Mistakes: ", this.mistakes);
         points.innerHTML = pointsText.join("");
     },
-
+    toggleGray: function () {
+      document.querySelectorAll('.card').forEach(function(item){
+        var clist= item.classList;
+        if(clist.contains("make-gray")){
+          item.classList.remove("make-gray");
+        }else{
+          item.classList.add("make-gray");
+        }
+      });
+  },
   settings: {
     rows: 2,
     columns: 3,
     images: 3, // Number of images
+    imgOffset:4,
   },
 
   // Properties that indicate state
@@ -53,7 +63,7 @@ var MemoryGame = {
    * @param {number} number of card images
    * @return {array} shuffled cards
    */
-  initialize : function(rows, columns, images, timerObj) {
+  initialize : function(rows, columns, images, imgOffset, timerObj) {
     var validOptions = true;
 
     // Validate arguments
@@ -78,6 +88,7 @@ var MemoryGame = {
       this.settings.rows = rows;
       this.settings.columns = columns;
       this.settings.images = images;
+      this.settings.imgOffset =imgOffset;
       this.attempts = 0;
       this.mistakes = 0;
       this.isGameOver = false;
@@ -254,6 +265,9 @@ var MemoryGame = {
             }
           }
           cardSelection = [];
+          if(this.attempts>0 && this.attempts%3===0){
+            this.toggleGray();
+          }
         }
         else {
           status.code = 1,
@@ -266,7 +280,7 @@ var MemoryGame = {
       }
 
       this.updatePoints();
-
+      
       return status;
 
     };

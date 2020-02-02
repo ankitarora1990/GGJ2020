@@ -144,6 +144,100 @@
 .back.card-15 {
   background-image: url(../images/fruits/strawberry.jpg);
 }
+.back.card-16{
+  background-image: url(../images/buildings/Building1.png);
+}
+.back.card-17{
+  background-image: url(../images/buildings/Building2.png);
+}
+.back.card-18{
+  background-image: url(../images/buildings/Building3.png);
+}
+.back.card-19{
+  background-image: url(../images/buildings/Building4.png);
+}
+.back.card-20{
+  background-image: url(../images/buildings/Building5.png);
+}
+.back.card-21{
+  background-image: url(../images/buildings/Building6.png);
+}
+.back.card-22{
+  background-image: url(../images/buildings/Building7.png);
+}
+.back.card-23{
+  background-image: url(../images/buildings/Building8.png);
+}
+.back.card-24{
+  background-image: url(../images/buildings/Building9.png);
+}
+.back.card-25{
+  background-image: url(../images/buildings/Building10.png);
+}
+.back.card-26{
+  background-image: url(../images/buildings/Building11.png);
+}
+.back.card-27{
+  background-image: url(../images/buildings/Building12.png);
+}
+.back.card-28{
+  background-image: url(../images/buildings/Building13.png);
+}
+.back.card-29{
+  background-image: url(../images/buildings/Building14.png);
+}
+.back.card-30{
+  background-image: url(../images/buildings/Building15.png);
+}
+.back.card-31{
+  background-image: url(../images/furs/F1.jpg);
+}
+.back.card-32{
+  background-image: url(../images/furs/F2.png);
+}
+.back.card-33{
+  background-image: url(../images/furs/F3.png);
+}
+.back.card-34{
+  background-image: url(../images/furs/F4.png);
+}
+.back.card-35{
+  background-image: url(../images/furs/F5.png);
+}
+.back.card-36{
+  background-image: url(../images/furs/F6.png);
+}
+.back.card-37{
+  background-image: url(../images/furs/F7.png);
+}
+.back.card-38{
+  background-image: url(../images/furs/F8.png);
+}
+.back.card-39{
+  background-image: url(../images/furs/F9.png);
+}
+.back.card-40{
+  background-image: url(../images/furs/F10.png);
+}
+.back.card-41{
+  background-image: url(../images/furs/F11.png);
+}
+.back.card-42{
+  background-image: url(../images/furs/F12.png);
+}
+.back.card-43{
+  background-image: url(../images/furs/F13.png);
+}
+.back.card-44{
+  background-image: url(../images/furs/F14.png);
+}
+.back.card-45{
+  background-image: url(../images/furs/F15.png);
+}
+
+.make-gray{
+  filter: grayscale(100%);
+}
 
 /* Monkey Movement */
 .lr_monkey {
@@ -187,10 +281,10 @@ animation-play-state: paused;
 }
 @keyframes move-it-bt {
   0% {
-    bottom: 0%;
+    bottom: 10%;
   }
   100% {
-    bottom: 100%;
+    bottom: 91%;
   }
 }
 /** Matching Cards **/
