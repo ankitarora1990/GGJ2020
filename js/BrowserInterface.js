@@ -57,6 +57,15 @@
     // var playPromise = audio.play();
     
 
+ // Handle clicking on Play music icon
+ var settings = document.getElementById('memory-settings-play-icon');
+ var handlePlayMusic = function (event) {
+   event.preventDefault();
+   var audio = new Audio('music/Re-Pair.mp3');
+   var playPromise = audio.play();
+ };
+ settings.addEventListener('click', handlePlayMusic);
+
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
   //  var modal = document.getElementById('memory-settings-modal');
@@ -65,7 +74,6 @@
   //    modal.classList.toggle('show');
   //  };
   //  settings.addEventListener('click', handleOpenSettings);
-
 
   // Handle clicking on card
   var handleFlipCard = function (event) {
