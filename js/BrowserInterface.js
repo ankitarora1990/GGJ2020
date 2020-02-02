@@ -99,6 +99,7 @@
     else if (status.code == 4) {
       var score = parseInt((($.attempts - $.mistakes) / $.attempts) * 100, 10);
       var message = getEndGameMessage(score);
+      $.stopTimer();
 
       document.getElementById('memory-end-game-message').textContent = message;
       document.getElementById('memory-end-game-score').textContent =

@@ -4,7 +4,7 @@
 var MemoryGame = {
 
   startTimer: function(timerObj) {
-      setInterval(function(){
+      this.interval = setInterval(function(){
           var timer = document.querySelector(".timer");
           timer.innerHTML = timerObj.minute+"mins "+ timerObj.second+"secs";
           timerObj.second++;
@@ -18,6 +18,10 @@ var MemoryGame = {
           }
       },1000);
   },
+
+  stopTimer: function(timerObj) {
+    clearInterval(this.interval);
+},
 
     updatePoints: function () {
         var points = document.querySelector(".points");
@@ -37,6 +41,7 @@ var MemoryGame = {
   attempts: 0, // How many pairs of cards were flipped before completing game
   mistakes: 0, 
   isGameOver: false,
+  interval: null,
 
   /**
    * Modify default settings to start a new game.
