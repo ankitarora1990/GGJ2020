@@ -5,25 +5,52 @@
     <meta charset="utf-8" />
     <title>Test scenarios</title>
     <script src="js/CompareCards.js"></script>
+    <script src="js/MemoryGame.js"></script>
+    <script src="js/Card.js"></script>
+
     <script>
-        function testCompareCards(card1, card2, expected) {
+        var results = {
+            total: 0,
+            bad: 0
+        };
+
+        // Test Report Logging
+        function updateTestResults(result, expected) {
             results.total++;
-            var result = CompareCards(card1, card2);
             if (result !== expected) {
                 results.bad++;
                 console.log("Expected " + expected + ", but was " + result);
             }
         }
-        var results = {
-            total: 0,
-            bad: 0
-        };
-        testCompareCards("A", "B", false);
-        testCompareCards("A", "A", true);
-        testCompareCards("B", "B", true);
+
+        // Test Fixturing
+
+        function testCreateCard(value, isMatchingCard, expectedValue) {
+            const defaultIsRevealed = false;
+
+            var result = new MemoryGame.Card(value, isMatchingCard);
+
+            updateTestResults(result.value, expectedValue);
+            updateTestResults(result.isRevealed, defaultIsRevealed);
+        }
+
+        function testCardsMatch(card1, card2, expected) {
+            var result = cardsMatch(card1, card2);
+
+            updateTestResults(result, expected);
+        }
+
+        //Test Scenarios
+
+        testCreateCard("A", false, "A");
+
+        testCardsMatch(new MemoryGame.Card("A", false), new MemoryGame.Card("B", false), false);
+        testCardsMatch(new MemoryGame.Card("A", false), new MemoryGame.Card("A", false), true);
+        testCardsMatch(new MemoryGame.Card("B", false), new MemoryGame.Card("B", false), true);
 
         console.log("Of " + results.total + " tests, " + results.bad + " failed, "
             + (results.total - results.bad) + " passed.");
+
     </script>
 </head>
 <body>

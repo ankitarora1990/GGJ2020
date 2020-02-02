@@ -203,12 +203,13 @@ var MemoryGame = {
         this.cards[index].reveal();
         cardSelection.push(index);
         if (cardSelection.length == 2) {
+          card1 = this.cards[cardSelection[0]];
+          card2 = this.cards[cardSelection[1]];
           this.attempts++;
-          if (this.cards[cardSelection[0]].value !=
-              this.cards[cardSelection[1]].value) {
+          if (!cardsMatch(card1, card2)) {
             // No match
-            this.cards[cardSelection[0]].conceal();
-            this.cards[cardSelection[1]].conceal();
+            card1.conceal();
+            card2.conceal();
             /**
              * Algorithm to determine a mistake.
              * Check if the pair of at least
@@ -218,15 +219,15 @@ var MemoryGame = {
              */
             var isMistake = false;
 
-            if (revealedValues.indexOf(this.cards[cardSelection[0]].value) === -1) {
-              revealedValues.push(this.cards[cardSelection[0]].value);
+            if (revealedValues.indexOf(card1) === -1) {
+              revealedValues.push(card1.value);
             }
             else {
               isMistake = true;
             }
 
-            if (revealedValues.indexOf(this.cards[cardSelection[1]].value) === -1) {
-              revealedValues.push(this.cards[cardSelection[1]].value);
+            if (revealedValues.indexOf(card2.value) === -1) {
+              revealedValues.push(card2.value);
             }
 
             if (isMistake) {
@@ -274,4 +275,8 @@ var MemoryGame = {
     };
   })()
 
+};
+
+function cardsMatch(card1, card2) {
+  return card1.value === card2.value
 };
