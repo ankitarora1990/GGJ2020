@@ -210,6 +210,8 @@
     flipContainer.index = index;
     flipContainer.style.width = width;
     flipContainer.style.height = height;
+    flipContainer.style.marginBottom ="-1%";
+    flipContainer.style.marginLeft ="-1%";
     flipContainer.classList.add("flip-container");
     if (card.isRevealed) {
       flipContainer.classList.add("clicked");
