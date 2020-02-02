@@ -112,22 +112,11 @@
   var getEndGameMessage = function(score) {
     var message = "";
     var mky = document.querySelector('.bt_monkey');
-<<<<<<< HEAD
     mky.style.display="none";
 
     // mky.style.webkitAnimationPlayState = "paused";
     // mky.style.left = "50%";
     // mky.style.top="-60%";
-=======
-    mky.style.webkitAnimationPlayState = "paused";
-    mky.style.width = "250px";
-    mky.style.height="250px";
-    mky.style.left = "47%";
-    mky.style.top="-50%";
-    mky.style.backgroundColor = "transparent"
-    mky.style.opacity = "1"
-
->>>>>>> master
     if (score == 100) {
       message = "Yay. The good monkey won!"
       var emky = document.querySelector('.end_monkey1');
