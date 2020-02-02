@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Re-PAIR GGJ 2020</title>
+    <link href="css/cards.css" type="text/css" rel="stylesheet" />
+    <link href="css/layout.css" type="text/css" rel="stylesheet" />
+</head>
+  <body>
+      <section id="memory-settings-modal" class="valign-table modal show">
+          <div class="valign-cell">
+              <form action="main.html"> 
+                  <h2 class="memory-settings-label">Choose Level:</h2>
+                  <select id="memory-settings-grid" name="difficulty">
+                      <option value="2x3">Easy</option>
+                      <option value="3x4" selected>Medium</option>
+                      <option value="4x5">Hard</option>
+                      <option value="5x6">Seriously Dude? Don't try this !</option>
+                  </select>
+                  <input id="memory-settings-reset" type="submit" value="Start Game" />
+              </form>
+          </div>
+      </section>
+      <section class="memory-menu-bar">
+          <div class="inner">
+              <div class="left"><h1 class="memory-app-name">Re-PAIR with Chaos</h1></div>
+              <div class="points memory-app-name"></div>
+              <div class="right"><a href="#settings"><img id="memory-settings-icon" src="images/gear.png" /></a></div>
+              <div class="timer memory-app-name"></div>
+          </div>
+      </section>
+      <section id="memory-end-game-modal" class="valign-table modal">
+          <div class="valign-cell">
+              <div class="wrapper">
+                  <h2 id="memory-end-game-message"></h2>
+                  <h3 id="memory-end-game-score"></h3>
+              </div>
+          </div>
+      </section>
+      <section class="intro_monkey">
+        <img src="images/monkeys/mwalk.gif" />		
+      </section>
+      <script>
+        // Handle settings form submission
+        var reset = document.getElementById('memory-settings-reset');
+        var handleSettingsSubmission = function (event) {
+            event.preventDefault();
+            var selectWidget = document.getElementById("memory-settings-grid").valueOf();
+            var grid = selectWidget.options[selectWidget.selectedIndex].value;
+            var gridValues = grid.split('x');
+            sessionStorage.diff_w=gridValues[0];
+            sessionStorage.diff_h=gridValues[1];
+            window.location.href = "main.html";
+        };
+        reset.addEventListener('click', handleSettingsSubmission);
+      </script>
+  </body>
+</html>
