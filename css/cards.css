@@ -239,6 +239,10 @@
   filter: grayscale(100%);
 }
 
+.make-rot{
+  transform: rotate(180deg);
+}
+
 /* Monkey Movement */
 .lr_monkey {
 	width:100%;
