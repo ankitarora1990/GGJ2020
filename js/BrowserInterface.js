@@ -72,6 +72,16 @@
  };
  settings.addEventListener('click', handlePlayMusic);
 
+// Handle clicking on Next Level
+var btnNextLevel = document.getElementById('btnNextLevel');
+var handlePlayNext = function (event) {
+  event.preventDefault();
+  sessionStorage.diff_w = Number(sessionStorage.getItem("diff_w")) + 1;
+  sessionStorage.diff_h = Number(sessionStorage.getItem("diff_h")) + 1;
+  window.location.reload();
+};
+btnNextLevel.addEventListener('click', handlePlayNext);
+
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
   //  var modal = document.getElementById('memory-settings-modal');
