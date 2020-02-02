@@ -253,16 +253,20 @@
   width:100%;
   left: 0%;
 	position:relative;
-  animation: move-it-bt 8s infinite;
-  animation-delay: 15s;
-  background-color: #F15A5C;
+  animation: move-it-bt 15s infinite;
+  animation-delay: 1s;
+  background-color: rgb(218, 198, 25);
   opacity: 0.8;
   filter: blur(1px);
 }
 
 .bt_monkey-size{
-  width:100px;
-  height:100px;
+  width:10%;
+  height:10%;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .lr_monkey:hover{
@@ -288,7 +292,7 @@ animation-play-state: paused;
     bottom: 10%;
   }
   100% {
-    bottom: 91%;
+    bottom: 90%;
   }
 }
 /** Matching Cards **/

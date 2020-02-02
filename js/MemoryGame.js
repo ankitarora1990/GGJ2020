@@ -287,8 +287,10 @@ var MemoryGame = {
           }
           cardSelection = [];
           if(this.attempts>0 && this.attempts%3===0){
-            this.toggleRotate();
             this.toggleGray();
+          }
+          if(this.attempts>0 && Math.floor(Math.random() * this.attempts) == 0){
+            this.toggleRotate();
           }
         }
         else {
