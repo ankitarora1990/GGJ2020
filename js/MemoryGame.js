@@ -113,6 +113,16 @@ var MemoryGame = {
     this.hour = 0;
     this.startTimer(timerObj);
 
+    var audioPlayer = document.getElementById('theme-audio');
+    audioPlayer.pause();
+    if(sessionStorage.getItem("diff_h") === "6"){
+      audioPlayer.src = 'music/3. Seriously_.mp3';
+    }
+    else{
+      audioPlayer.src = 'music/Re-Pair.mp3';
+    }
+    audioPlayer.play();
+
     return this.cards;
   },
 
