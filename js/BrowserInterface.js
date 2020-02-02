@@ -60,10 +60,27 @@
  var settings = document.getElementById('memory-settings-play-icon');
  var handlePlayMusic = function (event) {
    event.preventDefault();
-   var audio = new Audio('music/Re-Pair.mp3');
+   var audio = null;
+   if(sessionStorage.getItem("diff_h") === "6"){
+    audio = new Audio('music/3. Seriously_.mp3');
+   }
+   else{
+    audio = new Audio('music/Re-Pair.mp3');
+   }
+
    var playPromise = audio.play();
  };
  settings.addEventListener('click', handlePlayMusic);
+
+// Handle clicking on Next Level
+var btnNextLevel = document.getElementById('btnNextLevel');
+var handlePlayNext = function (event) {
+  event.preventDefault();
+  sessionStorage.diff_w = Number(sessionStorage.getItem("diff_w")) + 1;
+  sessionStorage.diff_h = Number(sessionStorage.getItem("diff_h")) + 1;
+  window.location.reload();
+};
+btnNextLevel.addEventListener('click', handlePlayNext);
 
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
