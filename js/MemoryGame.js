@@ -29,7 +29,27 @@ var MemoryGame = {
         pointsText.push("Attempts: ", this.attempts, " Mistakes: ", this.mistakes);
         points.innerHTML = pointsText.join("");
     },
-
+    toggleGray: function () {
+      document.querySelectorAll('.card').forEach(function(item){
+        var clist= item.classList;
+        if(clist.contains("make-gray")){
+          item.classList.remove("make-gray");
+        }else{
+          item.classList.add("make-gray");
+        }
+      });
+  },
+  toggleRotate: function () {
+    document.querySelectorAll('.flipper').forEach(function(item){
+      var clist= item.classList;
+      if(clist.contains("make-rot")){
+        item.classList.remove("make-rot");
+      }
+      else{
+        item.classList.add("make-rot");
+      }
+    });
+},
   settings: {
     rows: 2,
     columns: 3,
@@ -92,6 +112,16 @@ var MemoryGame = {
     this.minute = 0; 
     this.hour = 0;
     this.startTimer(timerObj);
+
+    var audioPlayer = document.getElementById('theme-audio');
+    audioPlayer.pause();
+    if(sessionStorage.getItem("diff_h") === "6"){
+      audioPlayer.src = 'music/3. Seriously_.mp3';
+    }
+    else{
+      audioPlayer.src = 'music/Re-Pair.mp3';
+    }
+    audioPlayer.play();
 
     return this.cards;
   },
@@ -250,6 +280,10 @@ var MemoryGame = {
             }
           }
           cardSelection = [];
+          if(this.attempts>0 && this.attempts%3===0){
+            this.toggleRotate();
+            this.toggleGray();
+          }
         }
         else {
           status.code = 1,
@@ -262,7 +296,7 @@ var MemoryGame = {
       }
 
       this.updatePoints();
-
+      
       return status;
 
     };

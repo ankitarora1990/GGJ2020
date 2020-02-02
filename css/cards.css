@@ -235,6 +235,14 @@
   background-image: url(../images/furs/F15.png);
 }
 
+.make-gray{
+  filter: grayscale(100%);
+}
+
+.make-rot{
+  transform: rotate(180deg);
+}
+
 /* Monkey Movement */
 .lr_monkey {
 	width:100%;
@@ -250,6 +258,11 @@
   background-color: #F15A5C;
   opacity: 0.8;
   filter: blur(1px);
+}
+
+.bt_monkey-size{
+  width:100px;
+  height:100px;
 }
 
 .lr_monkey:hover{

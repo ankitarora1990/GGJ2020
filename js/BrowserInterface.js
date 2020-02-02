@@ -57,13 +57,32 @@
     
 
  // Handle clicking on Play music icon
- var settings = document.getElementById('memory-settings-play-icon');
- var handlePlayMusic = function (event) {
-   event.preventDefault();
-   var audio = new Audio('music/Re-Pair.mp3');
-   var playPromise = audio.play();
- };
- settings.addEventListener('click', handlePlayMusic);
+//  var settings = document.getElementById('memory-settings-play-icon');
+//  var handlePlayMusic = function (event) {
+//    event.preventDefault();
+//    var audio = null;
+//    if(sessionStorage.getItem("diff_h") === "6"){
+//     audio = new Audio('music/3. Seriously_.mp3');
+//    }
+//    else{
+//     audio = new Audio('music/Re-Pair.mp3');
+//    }
+
+//    var playPromise = audio.play();
+//  };
+//  settings.addEventListener('click', handlePlayMusic);
+
+// Handle clicking on Next Level OR Stay on same level
+var btnNextLevel = document.getElementById('btnNextLevel');
+var handlePlayNext = function (event) {
+  event.preventDefault();
+  if(btnNextLevel.innerText === "Try Next Level!"){
+    sessionStorage.diff_w = Number(sessionStorage.getItem("diff_w")) + 1;
+    sessionStorage.diff_h = Number(sessionStorage.getItem("diff_h")) + 1;
+  }
+  window.location.reload();
+};
+btnNextLevel.addEventListener('click', handlePlayNext);
 
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
@@ -112,20 +131,43 @@
   var getEndGameMessage = function(score) {
     var message = "";
     var mky = document.querySelector('.bt_monkey');
-    mky.style.webkitAnimationPlayState = "paused";
-    mky.style.left = "50%";
-    mky.style.top="-60%";
+    var btnNextLevel = document.getElementById('btnNextLevel');
+    mky.style.display="none";
+
+    // mky.style.webkitAnimationPlayState = "paused";
+    // mky.style.left = "50%";
+    // mky.style.top="-60%";
     if (score == 100) {
-      message = "You are a Pro!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
+      btnNextLevel.innerText = "Try Next Level!";
     }
     else if (score >= 70 ) {
-      message = "Great job!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
+      btnNextLevel.innerText = "Try Next Level!";
     }
     else if (score >= 50) {
-      message = "Keep practicing, You have potential!"
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
+      btnNextLevel.innerText = "Retry this level";
     }
     else {
-      message = "Practice regularly, You can do better!";
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
+      btnNextLevel.innerText = "Retry this level";
     }
 
     return message;
@@ -192,6 +234,8 @@
     flipContainer.index = index;
     flipContainer.style.width = width;
     flipContainer.style.height = height;
+    flipContainer.style.marginBottom ="-1%";
+    flipContainer.style.marginLeft ="-1%";
     flipContainer.classList.add("flip-container");
     if (card.isRevealed) {
       flipContainer.classList.add("clicked");
@@ -201,6 +245,7 @@
     front.classList.add("front");
     front.setAttribute("href", "#");
     back.classList.add("back");
+    back.classList.add("card"); 
     back.classList.add("card-" + (card.value+imgOffset));
     if (card.isMatchingCard) {
       back.classList.add("matching");
