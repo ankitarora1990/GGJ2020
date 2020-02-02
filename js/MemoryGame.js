@@ -39,6 +39,17 @@ var MemoryGame = {
         }
       });
   },
+  toggleRotate: function () {
+    document.querySelectorAll('.flipper').forEach(function(item){
+      var clist= item.classList;
+      if(clist.contains("make-rot")){
+        item.classList.remove("make-rot");
+      }
+      else{
+        item.classList.add("make-rot");
+      }
+    });
+},
   settings: {
     rows: 2,
     columns: 3,
@@ -266,6 +277,7 @@ var MemoryGame = {
           }
           cardSelection = [];
           if(this.attempts>0 && this.attempts%3===0){
+            this.toggleRotate();
             this.toggleGray();
           }
         }
