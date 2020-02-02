@@ -13,6 +13,7 @@
       <section id="memory-settings-modal" class="valign-table modal show">
           <div class="valign-cell">
               <form action="main.html"> 
+                <div><a href=""><img id="memory-settings-play-icon-left" src="images/play.jpg" /></a></div>
                   <h2 class="memory-settings-label">Choose Level:</h2>
                   <select id="memory-settings-grid" name="difficulty">
                       <option value="2x3">Easy</option>
@@ -58,6 +59,14 @@
             window.location.href = "main.html";
         };
         reset.addEventListener('click', handleSettingsSubmission);
+
+        var settings = document.getElementById('memory-settings-play-icon-left');
+        var handlePlayMusic = function (event) {
+        event.preventDefault();
+        var audio = new Audio('music/1. Main Title.mp3');
+        var playPromise = audio.play();
+        };
+        settings.addEventListener('click', handlePlayMusic);
       </script>
   </body>
 </html>

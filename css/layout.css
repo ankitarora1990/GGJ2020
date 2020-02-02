@@ -105,6 +105,13 @@ body {
   float: right;
 }
 
+#memory-settings-play-icon-left{
+  height: 34px;
+  display: block;
+  padding:4px 8px;
+  float: left;
+}
+
 .memory-settings-label {
   margin:8px 0;
 }
