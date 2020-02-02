@@ -217,24 +217,17 @@ var MemoryGame = {
              *
              * indexOf return -1 if value is not found
              */
-            var isMistake = false;
-
-            if (revealedValues.indexOf(card1) === -1) {
-              revealedValues.push(card1.value);
-            }
-            else {
-              isMistake = true;
-            }
-
-            if (revealedValues.indexOf(card2.value) === -1) {
-              revealedValues.push(card2.value);
-            }
-
-            if (isMistake) {
+            if (isMistake(revealedValues, card1.value)) {
               this.mistakes++;
             }
 
-            revealedValues.push(this.cards[cardSelection[0]].value);
+            if (!revealedValues.hasValue(card1.value)) {
+              revealedValues.push(card1.value);
+            }
+
+            if (!revealedValues.hasValue(card2.value)) {
+              revealedValues.push(card2.value);
+            }
 
             status.code = 3,
             status.message = 'No Match. Conceal cards.';
@@ -280,3 +273,7 @@ var MemoryGame = {
 function cardsMatch(card1, card2) {
   return card1.value === card2.value
 };
+
+function isMistake(revealedValues, value) {
+  return revealedValues.hasValue(value);
+}
