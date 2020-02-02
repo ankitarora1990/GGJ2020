@@ -22,7 +22,7 @@ body {
   height: 100%;
   right: 0;
   top: 0;
-  z-index: 3;
+  /* z-index: 3; */
   width: 100%;
   visibility: hidden;
   opacity:0;
@@ -45,6 +45,7 @@ body {
   display: table-cell;
   position: relative;
   top: 50%;
+  z-index: -1;
 }
 
 #memory-app-container {
@@ -154,20 +155,31 @@ body {
 }
 
 /* End game Modal ends */
-
-
-.intro_monkey {
-	width:100%;
+.mh2{
+  width:28%;
+  height: 40%;
+  float: left;
+  padding: 70px;
   position:relative;
   bottom: 18%;
-  animation: move-it-mid 10s normal;
+  animation: move-it-mid 5s forwards;
 }
+.md2{
+  width:20%;
+  height: 50%;
+  float: right;
+  padding: 5px;
+  position:relative;
+  bottom: 18%;
+  animation: move-it-mid 5s forwards;
+}
+
 
 @keyframes move-it-mid {
   0% {
-    left: 0%;
+    bottom: -90%;
   }
   100% {
-    left: 40%;
+    bottom: -35%;
   }
 }
