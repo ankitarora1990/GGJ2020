@@ -134,6 +134,8 @@ btnNextLevel.addEventListener('click', handlePlayNext);
     // mky.style.webkitAnimationPlayState = "paused";
     // mky.style.left = "50%";
     // mky.style.top="-60%";
+      var emk = document.querySelector('.end_monkey');
+      emk.style.display="block";
     if (score == 100) {
       message = "Yay. The good monkey won!"
       var emky = document.querySelector('.end_monkey1');

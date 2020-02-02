@@ -196,6 +196,12 @@ body {
   bottom: 18%;
   animation: move-it-mid 5s forwards;
 }
+.end_monkey{
+  display: none;
+  background-image: url(../images/BananaBackground.png);
+  background-repeat: repeat;
+  background-size: contain;
+}
 .end_monkey1{
   display: none;
 }
