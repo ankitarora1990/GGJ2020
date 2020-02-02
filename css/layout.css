@@ -65,6 +65,7 @@ body {
   background-color: #222;
   height:10%;
   display:table;
+  z-index: -1;
 }
 
 .memory-menu-bar .inner {
@@ -191,8 +192,12 @@ body {
   bottom: 18%;
   animation: move-it-mid 5s forwards;
 }
-
-
+.end_monkey1{
+  display: none;
+}
+.end_monkey2{
+  display: none;
+}
 @keyframes move-it-mid {
   0% {
     bottom: -90%;
