@@ -233,12 +233,13 @@ var MemoryGame = {
         this.cards[index].reveal();
         cardSelection.push(index);
         if (cardSelection.length == 2) {
+          card1 = this.cards[cardSelection[0]];
+          card2 = this.cards[cardSelection[1]];
           this.attempts++;
-          if (this.cards[cardSelection[0]].value !=
-              this.cards[cardSelection[1]].value) {
+          if (!cardsMatch(card1, card2)) {
             // No match
-            this.cards[cardSelection[0]].conceal();
-            this.cards[cardSelection[1]].conceal();
+            card1.conceal();
+            card2.conceal();
             /**
              * Algorithm to determine a mistake.
              * Check if the pair of at least
@@ -246,24 +247,17 @@ var MemoryGame = {
              *
              * indexOf return -1 if value is not found
              */
-            var isMistake = false;
-
-            if (revealedValues.indexOf(this.cards[cardSelection[0]].value) === -1) {
-              revealedValues.push(this.cards[cardSelection[0]].value);
-            }
-            else {
-              isMistake = true;
-            }
-
-            if (revealedValues.indexOf(this.cards[cardSelection[1]].value) === -1) {
-              revealedValues.push(this.cards[cardSelection[1]].value);
-            }
-
-            if (isMistake) {
+            if (isMistake(revealedValues, card1.value)) {
               this.mistakes++;
             }
 
-            revealedValues.push(this.cards[cardSelection[0]].value);
+            if (!revealedValues.hasValue(card1.value)) {
+              revealedValues.push(card1.value);
+            }
+
+            if (!revealedValues.hasValue(card2.value)) {
+              revealedValues.push(card2.value);
+            }
 
             status.code = 3,
             status.message = 'No Match. Conceal cards.';
@@ -311,3 +305,11 @@ var MemoryGame = {
   })()
 
 };
+
+function cardsMatch(card1, card2) {
+  return card1.value === card2.value
+};
+
+function isMistake(revealedValues, value) {
+  return revealedValues.hasValue(value);
+}
