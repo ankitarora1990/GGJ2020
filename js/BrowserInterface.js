@@ -22,36 +22,13 @@
     points.innerHTML = "Attempts:   Mistakes: ";
 
   // Handle clicking on settings icon
-   var settings = document.getElementById('memory-settings-icon');
-   var modal = document.getElementById('memory-settings-modal');
-   var handleOpenSettings = function (event) {
-     event.preventDefault();
-     modal.classList.toggle('show');
-   };
-   settings.addEventListener('click', handleOpenSettings);
-
-
-
-  // Handle settings form submission
-  var reset = document.getElementById('memory-settings-reset');
-  var handleSettingsSubmission = function (event) {
-    event.preventDefault();
-
-    var selectWidget = document.getElementById("memory-settings-grid").valueOf();
-    var grid = selectWidget.options[selectWidget.selectedIndex].value;
-    var gridValues = grid.split('x');
-    var cards = $.initialize(Number(gridValues[0]), Number(gridValues[1]), imagesAvailable, timerObj);
-
-    if (cards) {
-      document.getElementById('memory-settings-modal').classList.remove('show');
-      document.getElementById('memory-end-game-modal').classList.remove('show');
-      document.getElementById('memory-end-game-message').innerText = "";
-      document.getElementById('memory-end-game-score').innerText = "";
-      buildLayout($.cards, $.settings.rows, $.settings.columns);
-    }
-
-  };
-  reset.addEventListener('click', handleSettingsSubmission);
+  //  var settings = document.getElementById('memory-settings-icon');
+  //  var modal = document.getElementById('memory-settings-modal');
+  //  var handleOpenSettings = function (event) {
+  //    event.preventDefault();
+  //    modal.classList.toggle('show');
+  //  };
+  //  settings.addEventListener('click', handleOpenSettings);
 
 
   // Handle clicking on card
@@ -188,5 +165,17 @@
 
     return flipContainer;
   };
+  var w=Number(sessionStorage.getItem("diff_w"));
+  var h=Number(sessionStorage.getItem("diff_h"));
+  console.log(w);
+  console.log(h);
+  var cards = $.initialize(w, h, imagesAvailable, timerObj);
 
+  if (cards) {
+    // document.getElementById('memory-settings-modal').classList.remove('show');
+    document.getElementById('memory-end-game-modal').classList.remove('show');
+    document.getElementById('memory-end-game-message').innerText = "";
+    document.getElementById('memory-end-game-score').innerText = "";
+    buildLayout($.cards, $.settings.rows, $.settings.columns);
+  }
 })(MemoryGame);

@@ -41,7 +41,8 @@ body {
 }
 .valign-cell {
   display: table-cell;
-  vertical-align: middle;
+  position: relative;
+  top: 50%;
 }
 
 #memory-app-container {
@@ -151,3 +152,20 @@ body {
 }
 
 /* End game Modal ends */
+
+
+.intro_monkey {
+	width:100%;
+  position:relative;
+  bottom: 18%;
+  animation: move-it-mid 10s normal;
+}
+
+@keyframes move-it-mid {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 40%;
+  }
+}
