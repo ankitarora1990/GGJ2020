@@ -55,6 +55,9 @@ body {
 
 #memory-app-container {
   background-color: #ffffff;
+  background: url(../images/BananaBackground.png);
+  background-repeat: repeat;
+  background-size: contain;
   width:100%;
   height:90%;
 }
