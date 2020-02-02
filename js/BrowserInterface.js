@@ -72,12 +72,14 @@
 //  };
 //  settings.addEventListener('click', handlePlayMusic);
 
-// Handle clicking on Next Level
+// Handle clicking on Next Level OR Stay on same level
 var btnNextLevel = document.getElementById('btnNextLevel');
 var handlePlayNext = function (event) {
   event.preventDefault();
-  sessionStorage.diff_w = Number(sessionStorage.getItem("diff_w")) + 1;
-  sessionStorage.diff_h = Number(sessionStorage.getItem("diff_h")) + 1;
+  if(btnNextLevel.innerText === "Try Next Level!"){
+    sessionStorage.diff_w = Number(sessionStorage.getItem("diff_w")) + 1;
+    sessionStorage.diff_h = Number(sessionStorage.getItem("diff_h")) + 1;
+  }
   window.location.reload();
 };
 btnNextLevel.addEventListener('click', handlePlayNext);
@@ -129,6 +131,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
   var getEndGameMessage = function(score) {
     var message = "";
     var mky = document.querySelector('.bt_monkey');
+    var btnNextLevel = document.getElementById('btnNextLevel');
     mky.style.display="none";
 
     // mky.style.webkitAnimationPlayState = "paused";
@@ -140,6 +143,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky.style.display="block";
       emky.style.left = "50%";
       emky.style.top="-60%";
+      btnNextLevel.innerText = "Try Next Level!";
     }
     else if (score >= 70 ) {
       message = "Yay. The good monkey won!"
@@ -147,6 +151,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky.style.display="block";
       emky.style.left = "50%";
       emky.style.top="-60%";
+      btnNextLevel.innerText = "Try Next Level!";
     }
     else if (score >= 50) {
       message = "Oh no! The evil monkey won!";
@@ -154,6 +159,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky2.style.display="block";
       emky2.style.left = "50%";
       emky2.style.top="-60%";
+      btnNextLevel.innerText = "Retry this level";
     }
     else {
       message = "Oh no! The evil monkey won!";
@@ -161,6 +167,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky2.style.display="block";
       emky2.style.left = "50%";
       emky2.style.top="-60%";
+      btnNextLevel.innerText = "Retry this level";
     }
 
     return message;
