@@ -254,7 +254,7 @@
   left: 0%;
 	position:relative;
   animation: move-it-bt 15s infinite;
-  animation-delay: 1s;
+  animation-delay: 15s;
   background-color: rgb(218, 198, 25);
   opacity: 0.8;
   filter: blur(1px);

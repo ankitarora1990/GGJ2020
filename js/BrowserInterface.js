@@ -84,6 +84,15 @@ var handlePlayNext = function (event) {
 };
 btnNextLevel.addEventListener('click', handlePlayNext);
 
+
+// Handle clicking of Credit
+var btnCredits = document.getElementById('btnCredits');
+var handlebtnCredits = function (event) {
+  event.preventDefault();
+  window.location.href = "credits.html";
+};
+btnCredits.addEventListener('click', handlebtnCredits);
+
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
   //  var modal = document.getElementById('memory-settings-modal');
@@ -147,7 +156,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky.style.top="-60%";
       btnNextLevel.innerText = "Try Next Level!";
     }
-    else if (score >= 70 ) {
+    else if (score >= 60 ) {
       message = "Yay. The good monkey won!"
       var emky = document.querySelector('.end_monkey1');
       emky.style.display="block";
@@ -155,7 +164,7 @@ btnNextLevel.addEventListener('click', handlePlayNext);
       emky.style.top="-60%";
       btnNextLevel.innerText = "Try Next Level!";
     }
-    else if (score >= 50) {
+    else if (score >= 40) {
       message = "Oh no! The evil monkey won!";
       var emky2 = document.querySelector('.end_monkey2');
       emky2.style.display="block";
