@@ -235,6 +235,10 @@
   background-image: url(../images/furs/F15.png);
 }
 
+.make-gray{
+  filter: grayscale(100%);
+}
+
 /* Monkey Movement */
 .lr_monkey {
 	width:100%;

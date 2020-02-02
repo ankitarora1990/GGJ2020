@@ -219,6 +219,7 @@
     front.classList.add("front");
     front.setAttribute("href", "#");
     back.classList.add("back");
+    back.classList.add("card"); 
     back.classList.add("card-" + (card.value+imgOffset));
     if (card.isMatchingCard) {
       back.classList.add("matching");
