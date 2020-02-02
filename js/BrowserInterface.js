@@ -60,7 +60,14 @@
  var settings = document.getElementById('memory-settings-play-icon');
  var handlePlayMusic = function (event) {
    event.preventDefault();
-   var audio = new Audio('music/Re-Pair.mp3');
+   var audio = null;
+   if(sessionStorage.getItem("diff_h") === "6"){
+    audio = new Audio('music/3. Seriously_.mp3');
+   }
+   else{
+    audio = new Audio('music/Re-Pair.mp3');
+   }
+
    var playPromise = audio.play();
  };
  settings.addEventListener('click', handlePlayMusic);
