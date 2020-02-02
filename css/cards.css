@@ -162,6 +162,11 @@
   filter: blur(1px);
 }
 
+.bt_monkey-size{
+  width:100px;
+  height:100px;
+}
+
 .lr_monkey:hover{
 animation-play-state: paused;
 /* JavaScript syntax: object.style.animationPlayState="paused" */

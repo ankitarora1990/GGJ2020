@@ -48,6 +48,11 @@ body {
   z-index: -1;
 }
 
+.valign-cell-end {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 #memory-app-container {
   background-color: #ffffff;
   width:100%;

@@ -114,8 +114,13 @@
     var message = "";
     var mky = document.querySelector('.bt_monkey');
     mky.style.webkitAnimationPlayState = "paused";
-    mky.style.left = "50%";
-    mky.style.top="-60%";
+    mky.style.width = "250px";
+    mky.style.height="250px";
+    mky.style.left = "47%";
+    mky.style.top="-50%";
+    mky.style.backgroundColor = "transparent"
+    mky.style.opacity = "1"
+
     if (score == 100) {
       message = "You are a Pro!"
     }
