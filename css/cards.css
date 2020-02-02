@@ -156,6 +156,10 @@
   left: 0%;
 	position:relative;
   animation: move-it-bt 8s infinite;
+  animation-delay: 15s;
+  background-color: #F15A5C;
+  opacity: 0.8;
+  filter: blur(1px);
 }
 
 .lr_monkey:hover{
