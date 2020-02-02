@@ -15,11 +15,47 @@
     hour: 0
   };
 
+  // Handle Timer to start
   var timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
 
+    // Handle redering of Attempts
     var points = document.querySelector(".points");
     points.innerHTML = "Attempts:   Mistakes: ";
+
+    // Handle start of music
+
+    //1
+    //var themeAudioPlayer = document.getElementById("theme-audio")
+    //   themeAudioPlayer.play();
+
+    //2
+    // document.body.addEventListener("mousemove", function () {
+    //   var themeAudioPlayer = document.getElementById("theme-audio")
+    //   themeAudioPlayer.play();
+    // })
+
+    //3
+    // var themeAudioPlayer = document.getElementById("theme-audio")
+    //   themeAudioPlayer.muted = true;
+    //   themeAudioPlayer.play();
+    
+    //4
+    // var fakeBtn = document.getElementById('btnFake');
+    // fakeBtn.addEventListener('click', myPlay, false);
+    // fakeBtn.click();
+
+    // function myPlay()
+    // {
+    //   var themeAudioPlayer = document.getElementById("theme-audio")
+    //   themeAudioPlayer.muted = true;
+    //   themeAudioPlayer.play();
+    // }
+    
+    //5
+    // var audio = new Audio('music/Re-Pair.mp3');
+    // var playPromise = audio.play();
+    
 
   // Handle clicking on settings icon
   //  var settings = document.getElementById('memory-settings-icon');
@@ -34,6 +70,9 @@
   // Handle clicking on card
   var handleFlipCard = function (event) {
     event.preventDefault();
+
+    var flipAudio = new Audio('music/Card Flip.wav');
+    var flipAudioPlayPromise = flipAudio.play();
 
     var status = $.play(this.index);
     console.log(status);
