@@ -112,20 +112,38 @@
   var getEndGameMessage = function(score) {
     var message = "";
     var mky = document.querySelector('.bt_monkey');
-    mky.style.webkitAnimationPlayState = "paused";
-    mky.style.left = "50%";
-    mky.style.top="-60%";
+    mky.style.display="none";
+
+    // mky.style.webkitAnimationPlayState = "paused";
+    // mky.style.left = "50%";
+    // mky.style.top="-60%";
     if (score == 100) {
-      message = "You are a Pro!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
     }
     else if (score >= 70 ) {
-      message = "Great job!"
+      message = "Yay. The good monkey won!"
+      var emky = document.querySelector('.end_monkey1');
+      emky.style.display="block";
+      emky.style.left = "50%";
+      emky.style.top="-60%";
     }
     else if (score >= 50) {
-      message = "Keep practicing, You have potential!"
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
     }
     else {
-      message = "Practice regularly, You can do better!";
+      message = "Oh no! The evil monkey won!";
+      var emky2 = document.querySelector('.end_monkey2');
+      emky2.style.display="block";
+      emky2.style.left = "50%";
+      emky2.style.top="-60%";
     }
 
     return message;
