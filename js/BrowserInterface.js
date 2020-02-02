@@ -6,8 +6,7 @@
   // How long a non matching card is displayed once clicked.
   var nonMatchingCardTime = 500;
 
-  // Shuffle card images: How many different images are available to shuffle from?
-  var imagesAvailable = 15;
+
 
   var timerObj = {
     second: 0, 
@@ -133,7 +132,7 @@
   }
 
   // Build grid of cards
-  var buildLayout = function (cards, rows, columns) {
+  var buildLayout = function (cards, rows, columns, imgOffset) {
     if (!cards.length) {
       return;
     }
@@ -157,7 +156,7 @@
       for (var j = 0; j < columns; j++) {
         // Use cloneNode(true) otherwise only one node is appended
         memoryCards.appendChild(buildCardNode(index, cards[index],
-          (100 / columns) + "%", (100 / rows) + "%"));
+          (100 / columns) + "%", (100 / rows) + "%", imgOffset));
         index++;
       }
     }
@@ -180,11 +179,11 @@
 
   // Update on resize
   window.addEventListener('resize', function() {
-    buildLayout($.cards, $.settings.rows, $.settings.columns);
+    buildLayout($.cards, $.settings.rows, $.settings.columns, $.settings.imgOffset);
   }, true);
 
   // Build single card
-  var buildCardNode = function (index, card, width, height) {
+  var buildCardNode = function (index, card, width, height, imgOffset) {
     var flipContainer = document.createElement("li");
     var flipper = document.createElement("div");
     var front = document.createElement("a");
@@ -202,7 +201,7 @@
     front.classList.add("front");
     front.setAttribute("href", "#");
     back.classList.add("back");
-    back.classList.add("card-" + card.value);
+    back.classList.add("card-" + (card.value+imgOffset));
     if (card.isMatchingCard) {
       back.classList.add("matching");
     }
@@ -218,13 +217,31 @@
   };
   var w=Number(sessionStorage.getItem("diff_w"));
   var h=Number(sessionStorage.getItem("diff_h"));
-  var cards = $.initialize(w, h, imagesAvailable, timerObj);
+  // Shuffle card images: How many different images are available to shuffle from?
+  var imagesAvailable = 0;
+  var imgOffset =0;
+  if(w===2 && h===3){
+    imagesAvailable=15;//fruits
+    imgOffset=0;
+  }
+  else if(w===3 && h===4){
+    imagesAvailable=15;//buildings
+    imgOffset=0;
+  }
+  else if(w===4 && h===5){
+    imagesAvailable=15;//furs
+    imgOffset=15;
+  }else if(w===5 && h===6){
+    imagesAvailable=15;//sat images
+    imgOffset=30;
+  }
+  var cards = $.initialize(w, h, imagesAvailable, imgOffset, timerObj);
 
   if (cards) {
     // document.getElementById('memory-settings-modal').classList.remove('show');
     document.getElementById('memory-end-game-modal').classList.remove('show');
     document.getElementById('memory-end-game-message').innerText = "";
     document.getElementById('memory-end-game-score').innerText = "";
-    buildLayout($.cards, $.settings.rows, $.settings.columns);
+    buildLayout($.cards, $.settings.rows, $.settings.columns, $.settings.imgOffset);
   }
 })(MemoryGame);

@@ -34,6 +34,7 @@ var MemoryGame = {
     rows: 2,
     columns: 3,
     images: 3, // Number of images
+    imgOffset:4,
   },
 
   // Properties that indicate state
@@ -53,7 +54,7 @@ var MemoryGame = {
    * @param {number} number of card images
    * @return {array} shuffled cards
    */
-  initialize : function(rows, columns, images, timerObj) {
+  initialize : function(rows, columns, images, imgOffset, timerObj) {
     var validOptions = true;
 
     // Validate arguments
@@ -78,6 +79,7 @@ var MemoryGame = {
       this.settings.rows = rows;
       this.settings.columns = columns;
       this.settings.images = images;
+      this.settings.imgOffset =imgOffset;
       this.attempts = 0;
       this.mistakes = 0;
       this.isGameOver = false;
