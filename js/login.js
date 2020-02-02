@@ -20,7 +20,7 @@
 		if(d4 === "7" && c3 === "7" && b2 === "7" && a1 === "7")
 		{
 			console.log(true);
-			$(location).attr('href', 'main.html');
+			$(location).attr('href', 'main_menu.html');
 		}
 		else
 		{

@@ -64,7 +64,10 @@
 
   var getEndGameMessage = function(score) {
     var message = "";
-
+    var mky = document.querySelector('.bt_monkey');
+    mky.style.webkitAnimationPlayState = "paused";
+    mky.style.left = "50%";
+    mky.style.top="-60%";
     if (score == 100) {
       message = "You are a Pro!"
     }
@@ -72,10 +75,10 @@
       message = "Great job!"
     }
     else if (score >= 50) {
-      message = "Keep practicing, you have potential!"
+      message = "Keep practicing, You have potential!"
     }
     else {
-      message = "Practice reugarly, You can do better!";
+      message = "Practice regularly, You can do better!";
     }
 
     return message;
@@ -167,8 +170,6 @@
   };
   var w=Number(sessionStorage.getItem("diff_w"));
   var h=Number(sessionStorage.getItem("diff_h"));
-  console.log(w);
-  console.log(h);
   var cards = $.initialize(w, h, imagesAvailable, timerObj);
 
   if (cards) {
