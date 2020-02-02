@@ -97,6 +97,12 @@ body {
   float: right;
 }
 
+#memory-settings-play-icon{
+  height: 34px;
+  display: block;
+  padding:4px 8px;
+  float: right;
+}
 
 .memory-settings-label {
   margin:8px 0;
